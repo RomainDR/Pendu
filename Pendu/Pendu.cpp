@@ -10,7 +10,6 @@ bool wordFind = false;
 
 #pragma endregion
 
-
 /// <summary>
 /// Set the guess word with verification of illegal caracters.
 /// </summary>
@@ -31,6 +30,11 @@ void SetWordGuest() {
     wordGuest = _temp;
 }
 
+/// <summary>
+/// Method to get the correct letter of string
+/// </summary>
+/// <param name="_letter">letter to verify</param>
+/// <returns>a string of correct caracter</returns>
 string GetCorrectLetter(char _letter) {
 
     string _finder = letterFind;
@@ -46,6 +50,11 @@ string GetCorrectLetter(char _letter) {
     letterFind = _finder;
     return _finder;
 }
+
+
+/// <summary>
+/// Method to show the correct word
+/// </summary>
 void Finish() {
     cout << "=========================" << endl
         << "Le mot était " << endl
@@ -53,9 +62,16 @@ void Finish() {
         << "=========================" << endl;
 }
 
+/// <summary>
+/// Method to get the word
+/// </summary>
+/// <returns>correct word</returns>
 string GetWord() {
     return wordGuest;
 }
+/// <summary>
+/// Method of game
+/// </summary>
 void Game()
 {
     string _word;
@@ -63,6 +79,7 @@ void Game()
         cout << "Saisir une lettre ou un mot: ";
         cin >> _word;
         for (int i = 0; i < _word.length(); i++) {
+            //Check if string has illegal caracter
             if ((_word[i] >= 65 && _word[i] <= 90) || (_word[i] >= 97 && _word[i] <= 122))
                 _word[i] = tolower(_word[i]);
             else {
@@ -74,6 +91,7 @@ void Game()
 
         system("CLS");
 
+        //Check if the word input is 1 caracters
         if (_word.length() == 1) {
             char _letter = _word[0];
             cout << "=========================" << endl
@@ -82,6 +100,8 @@ void Game()
                 << "=========================" << endl;
             if (letterFind == wordGuest)  wordFind = true;
         }
+
+        //Check if the word input is same as word guess
         else {
             cout << "=========================" << endl
                 << letterFind << endl
@@ -90,6 +110,8 @@ void Game()
             if (_word == wordGuest) wordFind = true;
         }
     }
+
+    //after the game, finish and showing the word.
     Finish();
     cout << "Fin de partie." << endl;
     if (wordFind) cout << "Bravo, tu as trouver le mot.";
