@@ -28,6 +28,7 @@ void SetWordGuest() {
         }
     }
     wordGuest = _temp;
+    system("CLS");
 }
 
 /// <summary>
